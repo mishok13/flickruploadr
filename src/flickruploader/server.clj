@@ -5,7 +5,6 @@
 
 (defn -main [& m]
   (let [mode (keyword (or (first m) :dev))
-        port (Integer. (get (System/getenv) "PORT" "8080"))]
+        port (Integer. (get (System/getenv) "PORT" "7070"))]
     (server/start port {:mode mode
                         :ns 'flickruploader})))
-
