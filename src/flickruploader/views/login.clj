@@ -1,11 +1,14 @@
 (ns flickruploader.views.login
   (:require noir.response)
   (:use [noir.core :only [defpage]]
-        [hiccup.core :only [html]]))
+        [noir.response :only [content-type]]
+        [hiccup.core :only [html]]
+        [clojure.core :only [slurp]]))
 
 
 (defpage "/" []
-  "It works!")
+  ;; (. (java.io.File. ".") getCanonicalPath))
+  (content-type "text/html" (slurp "static/login.html")))
 
 
 (defpage "/json/:key" {key :key}
