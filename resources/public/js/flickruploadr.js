@@ -3,10 +3,13 @@ define(['jquery'],
 	   return {app: function() {return Application;}};
        });
 
-var Application = function() {
+
+var Application = function(ignite) {
 
     var sessionToken = null;
     var session = null;
+    var igniteHost = "http://localhost:8080";
+    var services = ["facebook", "flickr", "hyves", "google"];
 
     var run = function() {
 	app = this;
@@ -16,7 +19,6 @@ var Application = function() {
 	$('#services').click(function () {return app.listServices();});
 	this.init();
     };
-
 
     var listServices = function() {
 	$.ajax({
@@ -47,7 +49,6 @@ var Application = function() {
 	this.session = new Session();
 	this.session.init();
     };
-
 
     var flickrLogin = function() {
 	loginPopup(this.getAuthURL("flickr"), "FlickrUploadr login");
